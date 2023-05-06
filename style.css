@@ -1,0 +1,176 @@
+html {
+    overflow: hidden;
+}
+
+#top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: #1f1f1f;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #181818;
+    color: #f0f0f0;
+    min-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: -20px;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settings-form {
+    padding: 2rem;
+    max-height: calc(100vh - 3.25rem);
+    overflow-y: auto;
+}
+
+.image-box {
+    width: 100%;
+    height: 300px; /* Set a desired height for the image container */
+    background-color: #f5f5f5; /* Set a background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+  
+  #output-image {
+    width: 100%;
+    height: auto; /* Prevents distortion of the image and maintains aspect ratio */
+  }
+  
+  #loading-animation {
+    position: absolute;
+    top: 0; /* Position the top-left corner of the animation at the top-left corner of the image-container */
+    left: 0;
+    width: 100%; /* Set the animation's width and height to cover the entire image-container */
+    height: 100%;
+    display: none;
+  }
+
+/* Existing CSS code */
+
+.settings-section {
+    border-bottom: 1px solid #333;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.section-content {
+    display: none;
+}
+
+/* Existing CSS code */
+
+body.dark-theme {
+    background-color: #222;
+}
+
+body.dark-theme .settings-form {
+    color: #ccc;
+}
+
+body.dark-theme .section-title:hover {
+    color: #fff;
+}
+
+body.dark-theme .button.is-link {
+    border-color: #fff;
+    color: #fff;
+}
+
+body.dark-theme .button.is-link:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+body.dark-theme .input {
+    background-color: #333;
+    color: #ccc;
+    border-color: #555;
+}
+
+/* Existing CSS code */
+
+body.dark-theme .label {
+    color: #ccc;
+}
+
+body.dark-theme .label:hover {
+    color: #fff;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+  .sk-chase {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    animation: sk-chase 2.5s infinite linear both;
+  }
+  
+  .sk-chase-dot {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: sk-chase-dot 2s infinite ease-in-out both;
+  }
+  
+  .sk-chase-dot:before {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 25%;
+    background-color: #fff;
+    border-radius: 100%;
+    animation: sk-chase-dot-before 2s infinite ease-in-out both;
+  }
+  
+  /* Keyframes animation for the loading spinner */
+  
+  @keyframes sk-chase {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes sk-chase-dot {
+    80%, 100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes sk-chase-dot-before {
+    50% {
+      transform: scale(0.4);
+    }
+    100%, 0% {
+      transform: scale(1);
+    }
+  }

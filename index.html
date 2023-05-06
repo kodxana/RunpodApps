@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunPod AI Web App</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body class="has-navbar-fixed-top dark-theme">
+    <nav class="navbar is-fixed-top is-dark" id="top-navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="title is-4 has-text-light">RunPod AI Web App</span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item has-text-light" href="#">Kandinsky 2.1</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input is-small" type="text" id="api_token" placeholder="API Token">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-key"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="columns">
+        <div class="column is-half">
+            <form id="api-form" class="settings-form">
+                <div class="level">
+                    <div class="level-left">
+                        <h2 class="title is-4 has-text-light">Settings</h2>
+                    </div>
+                    <div class="level-right">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="section-title" onclick="toggleSection(1)">Prompts</div>
+                    <div id="section-content-1" class="section-content" style="display: block;">
+                        <div class="field">
+                            <label class="label">Prompt</label>
+                            <div class="control">
+                                <input class="input" type="text" id="prompt" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="negative_prompt">Negative Prompt</label>
+                            <div class="control">
+                                <input class="input" type="text" name="negative_prompt" id="negative_prompt" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Negative Prior Prompt</label>
+                            <div class="control">
+                                <input class="input" type="text" id="negative_prior_prompt">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Negative Decoder Prompt</label>
+                            <div class="control">
+                                <input class="input" type="text" id="negative_decoder_prompt">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="section-title" onclick="toggleSection(2)">Image Properties</div>
+                    <div id="section-content-2" class="section-content">
+                        <div class="field">
+                            <label class="label">Height</label>
+                            <div class="control">
+                                <input class="input" type="number" value="768" id="h" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Width</label>
+                            <div class="control">
+                                <input class="input" type="number" value="768" id="w" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="num_steps">Num Steps</label>
+                            <div class="control">
+                                <input class="input" type="number" value="100" name="num_steps" id="num_steps" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="section-title" onclick="toggleSection(3)">Advanced Settings</div>
+                    <div id="section-content-3" class="section-content">
+                        <div class="field">
+                            <label class="label">Sampler</label>
+                            <div class="control">
+                                <input class="input" type="text" value="p_sampler" id="sampler" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Prior CF Scale</label>
+                            <div class="control">
+                                <input class="input" type="number" value="4" id="prior_cf_scale" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Prior Steps</label>
+                            <div class="control">
+                                <input class="input" type="text" value="4" id="prior_steps" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="column is-half">
+            <section id="output-section" class="section" style="display:none;">
+                <div class="image-box">
+                    <div class="image-container">
+                        <img id="output-image" src="" alt="Generated Artwork">
+                        <div id="loading-animation" class="loader">
+                            <div class="sk-chase">
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
